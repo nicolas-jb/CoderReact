@@ -21,9 +21,3 @@ export default function NavBar() {
     </>
   );
 }
-
-/*
-<Navbar bg="dark">
-        <Navbar.Brand>Logo</Navbar.Brand>
-      </Navbar>
-*/
