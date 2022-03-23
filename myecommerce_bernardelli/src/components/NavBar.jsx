@@ -9,14 +9,7 @@ export default function NavBar() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="home">
-            <img
-              alt=""
-              src={logo}
-              width="50"
-              height="50"
-              style={{ borderRadius: "50%" }}
-            />{" "}
-            Berna Commerce
+            <img alt="" src={logo} width="50" height="50" /> Berna Commerce
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="vehículos">Vehículos</Nav.Link>
