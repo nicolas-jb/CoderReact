@@ -1,7 +1,7 @@
 import React from "react";
 import ItemListContainer from "./Components/ItemListContainer";
 import NavBar from "./Components/NavBar";
-import "./App.css";
+import "./Styles/Offers.css";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <div>
         <NavBar />
       </div>
-      <div className="Items">
+      <div className="Offers">
         <h2>Las ofertas de la semana </h2>
         <ItemListContainer greeting={"Próximamente..."} />
       </div>
