@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import logo from "../logo.png";
+import CartWidget from "./CartWidget";
 
 export default function NavBar() {
   return (
@@ -16,6 +17,7 @@ export default function NavBar() {
             <Nav.Link href="electronica">Electronica</Nav.Link>
             <Nav.Link href="libros">Libros</Nav.Link>
           </Nav>
+          <CartWidget/> 
         </Container>
       </Navbar>
     </>

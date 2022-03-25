@@ -1,4 +1,7 @@
-import NavBar from "./components/NavBar";
+import React from "react";
+import ItemListContainer from "./Components/ItemListContainer";
+import NavBar from "./Components/NavBar";
+import "./App.css";
 
 function App() {
   return (
@@ -6,8 +9,9 @@ function App() {
       <div>
         <NavBar />
       </div>
-      <div style={{ marginLeft: "15px", marginTop: "15px" }}>
+      <div className="Items">
         <h2>Las ofertas de la semana </h2>
+        <ItemListContainer greeting={"Próximamente..."} />
       </div>
     </>
   );
