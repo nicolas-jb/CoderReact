@@ -15,7 +15,7 @@ import logo from "../logo.png";
 const pages = ["Vehículos", "Electrónica", "Libros"];
 
 
-export default function NavBar() {
+export default function NavBar({quantityProduct}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   //const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -104,7 +104,7 @@ export default function NavBar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0, color: "black"}}>
-            <CartWidget quantity={10} />
+            <CartWidget quantity={quantityProduct} />
           </Box>
         </Toolbar>
       </Container>

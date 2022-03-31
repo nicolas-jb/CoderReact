@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ItemListContainer from "./Components/ItemListContainer";
 import NavBar from "./Components/NavBar";
 
 function App() {
+  let [quantityProduct, setQuantityProduct] = useState(0);
+
+  function onAdd(quantity){
+    setQuantityProduct(quantity+quantityProduct);
+  }
+
   return (
     <>
-      <NavBar />
-      <ItemListContainer greeting={"Próximamente..."} />
+      <NavBar quantityProduct={quantityProduct} />
+      <ItemListContainer greeting={"Bienvenidos!"} onAdd={onAdd} />
     </>
   );
 }
