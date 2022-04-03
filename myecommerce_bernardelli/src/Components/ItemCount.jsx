@@ -10,7 +10,11 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 export default function ItemCount({ productName, stock, initial, onAdd }) {
   let [count, setCount] = React.useState(initial);
   let [actualStock, setActualStock] = React.useState(stock);
-    
+
+  React.useEffect(() => {
+    setCount(Math.min(actualStock, initial));
+  }, [actualStock, initial]);
+
   return (
     <Box
       sx={{
@@ -55,10 +59,9 @@ export default function ItemCount({ productName, stock, initial, onAdd }) {
         <Button
           color="warning"
           aria-label="reduce"
-          fullWidth="true"
+          fullWidth= {true}
           onClick={() => {
             setActualStock(actualStock - count);
-            setCount(Math.min(actualStock - count, initial));
             count > 0
               ? onAdd(count)
               : alert("Por el momento no tenemos stock de este producto");
