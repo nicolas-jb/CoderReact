@@ -8,8 +8,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 
 export default function ItemCount({ productName, stock, initial, onAdd }) {
-  let [count, setCount] = React.useState(initial);
-  let [actualStock, setActualStock] = React.useState(stock);
+  const [count, setCount] = React.useState(initial);
+  const [actualStock, setActualStock] = React.useState(stock);
 
   React.useEffect(() => {
     setCount(Math.min(actualStock, initial));
