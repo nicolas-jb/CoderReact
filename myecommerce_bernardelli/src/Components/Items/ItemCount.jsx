@@ -6,8 +6,9 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import Typography from "@mui/material/Typography";
 
-export default function ItemCount({ productName, stock, initial, onAdd }) {
+export default function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = React.useState(initial);
   const [actualStock, setActualStock] = React.useState(stock);
 
@@ -29,7 +30,6 @@ export default function ItemCount({ productName, stock, initial, onAdd }) {
         },
       }}
     >
-      <label>{productName}</label>
       <div>
         <Badge color="warning" badgeContent={count}>
           <ShoppingCartRoundedIcon />
@@ -55,11 +55,13 @@ export default function ItemCount({ productName, stock, initial, onAdd }) {
           </Button>
         </ButtonGroup>
       </div>
-      <ButtonGroup sx={{ width: "100%" }}>
+      <ButtonGroup
+        sx={{ width: "100%", display: "flex", flexDirection: "column" }}
+      >
         <Button
           color="warning"
           aria-label="reduce"
-          fullWidth= {true}
+          fullWidth={true}
           onClick={() => {
             setActualStock(actualStock - count);
             count > 0
@@ -69,6 +71,9 @@ export default function ItemCount({ productName, stock, initial, onAdd }) {
         >
           Agregar
         </Button>
+        <Typography variant="body2" align="center" >
+          Stock Disponible = {actualStock}
+        </Typography>
       </ButtonGroup>
     </Box>
   );

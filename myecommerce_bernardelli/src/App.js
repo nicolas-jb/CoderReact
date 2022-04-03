@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ItemListContainer from "./Components/ItemListContainer";
+import ItemListContainer from "./Components/Items/ItemListContainer";
 import NavBar from "./Components/NavBar";
 
 function App() {
