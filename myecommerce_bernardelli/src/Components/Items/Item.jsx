@@ -13,14 +13,11 @@ export default function Item({ product, onAdd }) {
         height="50%"
         width="50%"
         image={product.imageUrl}
-        alt={product.name}
+        alt={product.title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {product.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {product.description}
+          {product.title}
         </Typography>
       </CardContent>
       <ItemCount
