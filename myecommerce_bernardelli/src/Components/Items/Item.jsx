@@ -18,6 +18,12 @@ export default function Item({ product }) {
         <Typography gutterBottom variant="h5" component="div">
           {product.title}
         </Typography>
+        <Typography gutterBottom variant="h4" component="div">
+                {product.price.toLocaleString("es-AR", {
+                  style: "currency",
+                  currency: "ARS",
+                })}
+              </Typography>
         Stock actual={product.stock}
       </CardContent>
     </Card>

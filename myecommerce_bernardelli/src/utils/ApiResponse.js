@@ -12,11 +12,12 @@ export async function getProducts() {
       imageUrl: product.thumbnail,
       initial: 1,
       stock: product.available_quantity,
+      price: product.price
     };
   });
 }
 
-export async function getAProduct() {
+/*export async function getAProduct() {
   const apiResponse = (
     await axios.get("https://api.mercadolibre.com/items/MLA1123023407")
   ).data; // Busco un id en particular
@@ -30,4 +31,4 @@ export async function getAProduct() {
     description: "Esta es la descripción", 
     price: apiResponse.price
   };
-}
+}*/
