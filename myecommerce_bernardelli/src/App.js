@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ItemDetailContainer from "./Components/Items/ItemDetailContainer";
 import ItemListContainer from "./Components/Items/ItemListContainer";
 import NavBar from "./Components/NavBar";
 
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
       <NavBar quantityProduct={quantityProduct} />
-      <ItemListContainer greeting={"Bienvenidos!"} onAdd={onAdd} />
+      <ItemListContainer greeting={"Bienvenidos!"}  />
+      <ItemDetailContainer onAdd={onAdd} />
     </>
   );
 }

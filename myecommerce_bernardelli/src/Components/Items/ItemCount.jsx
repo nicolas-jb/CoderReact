@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Badge from "@mui/material/Badge";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -9,10 +9,11 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import Typography from "@mui/material/Typography";
 
 export default function ItemCount({ stock, initial, onAdd }) {
-  const [count, setCount] = React.useState(initial);
-  const [actualStock, setActualStock] = React.useState(stock);
+  
+  const [count, setCount] = useState(initial);
+  const [actualStock, setActualStock] = useState(stock);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCount(Math.min(actualStock, initial));
   }, [actualStock, initial]);
 
@@ -71,7 +72,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
         >
           Agregar
         </Button>
-        <Typography variant="body2" align="center" >
+        <Typography variant="body2" align="center">
           Stock Disponible = {actualStock}
         </Typography>
       </ButtonGroup>

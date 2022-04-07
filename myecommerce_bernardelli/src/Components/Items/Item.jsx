@@ -3,9 +3,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import ItemCount from "./ItemCount";
 
-export default function Item({ product, onAdd }) {
+export default function Item({ product }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -19,12 +18,8 @@ export default function Item({ product, onAdd }) {
         <Typography gutterBottom variant="h5" component="div">
           {product.title}
         </Typography>
+        Stock actual={product.stock}
       </CardContent>
-      <ItemCount
-        stock={product.stock}
-        initial={product.initial}
-        onAdd={onAdd}
-      />
     </Card>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getProducts } from "../../utils/ApiResponse.js";
 import ItemList from "./ItemList";
 
-export default function ItemListContainer({ greeting, onAdd }) {
+export default function ItemListContainer({ greeting }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function ItemListContainer({ greeting, onAdd }) {
         {greeting}
       </h2>
       <div>
-        <ItemList products={products} onAdd={onAdd} />
+        <ItemList products={products} />
       </div>
     </>
   );
