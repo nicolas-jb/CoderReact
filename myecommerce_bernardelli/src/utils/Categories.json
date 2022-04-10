@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "MLA1051",
+      "description": "Celulares y Teléfonos",
+      "title": "CELULARES"
+    },
+    {
+      "id": "MLA1648",
+      "description": "Computación",
+      "title": "COMPUTACIÓN"
+    },
+    {
+      "id": "MLA1144",
+      "description": "Consolas y Videojuegos",
+      "title": "CONSOLAS"
+    },
+    {
+      "id": "MLA1000",
+      "description": "Electrónica, Audio y Video",
+      "title": "ELECTRÓNICA"
+    }
+  ]
+}

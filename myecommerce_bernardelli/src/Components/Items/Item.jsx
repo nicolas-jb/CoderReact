@@ -6,26 +6,28 @@ import Typography from "@mui/material/Typography";
 
 export default function Item({ product }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="50%"
-        width="50%"
-        image={product.imageUrl}
-        alt={product.title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.title}
-        </Typography>
-        <Typography gutterBottom variant="h4" component="div">
-                {product.price.toLocaleString("es-AR", {
-                  style: "currency",
-                  currency: "ARS",
-                })}
-              </Typography>
-        Stock actual={product.stock}
-      </CardContent>
-    </Card>
+    <div>
+      <Card sx={{ maxWidth: 345, minHeight: 650 }}>
+        <CardMedia
+          component="img"
+          height="100%"
+          width="50%"
+          image={product.imageUrl}
+          alt={product.title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {product.title}
+          </Typography>
+          <Typography gutterBottom variant="h4" component="div">
+            {product.price.toLocaleString("es-AR", {
+              style: "currency",
+              currency: "ARS",
+            })}
+          </Typography>
+        </CardContent>
+        <Typography variant="body1">Stock actual={product.stock}</Typography>
+      </Card>
+    </div>
   );
 }

@@ -1,0 +1,24 @@
+.textContainer {
+    font-family: sans-serif;
+    padding-top: 100px;
+    margin-left: 20%;
+    width: 100%;
+    font-style: italic
+}
+
+.text{
+    padding-top: 5%;
+}
+
+.imageNotFound {
+    margin-left: 10%;
+}
+
+.container {
+    display: flex;
+}
+
+.button{
+    margin-left: 20%;
+    text-decoration: none
+}

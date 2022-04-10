@@ -1,0 +1,33 @@
+.productContainer {
+    background-color: white;
+    margin: 3% 20%;
+  }
+  
+  .productDetail {
+    display: flex;
+  }
+  .productDetailImage {
+    width: auto;
+    height: 10%;
+    padding: 10px 20px
+  }
+  .productDetailText{
+      padding: 0px 20px
+  }
+  
+  .productDetailImageSize {
+    width: 100%;
+    height: 100%;
+  }
+  .productPurchase {
+    background-color: #ffcc00;
+    border-color: transparent;
+    color: black;
+    border-radius: 6px;
+    height: 48px;
+    width: 200px;
+  }
+  
+  .productTextDescription{
+      padding: 0px 20px
+  }
