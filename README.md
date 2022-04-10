@@ -39,7 +39,7 @@ The first route is the home, on that page 6 products (the most relevant) of a ca
 - Image (this image is not seen with greater definition, since it is the one that the api returns as a thumbnail, within the product there is a higher quality image)
 - Title
 - Price
--Stock
+- Stock
 
 All results are provided by the API. Clicking on a product opens another route with its details
 
