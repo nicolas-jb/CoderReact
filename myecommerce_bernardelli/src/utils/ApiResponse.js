@@ -4,7 +4,7 @@ import Categories from "./Categories.json";
 export async function getProducts(categoryTitle) {
   let categoryId;
   if (categoryTitle) {
-    categoryId = Categories.data.filter((c) => c.title === categoryTitle)[0].id; //debo convertir el id de la categoría mostrada en la url, en el id que espera la API
+    categoryId = Categories.data.find((c) => c.title === categoryTitle).id; //debo convertir el id de la categoría mostrada en la url, en el id que espera la API
   } else {
     categoryId =
       Categories.data[Math.floor(Math.random() * Categories.data.length)].id; //si no me llega el ID voy a buscar 6 productos de una categoría random, acá se podrían poner las últimas búsquedas del usuario u ofertas
