@@ -4,6 +4,7 @@ import ItemDetailContainer from "./Components/Items/ItemDetailContainer";
 import ItemListContainer from "./Components/Items/ItemListContainer";
 import NavBar from "./Components/NavBar/NavBar";
 import NotFound from "./Components/NotFound/NotFound";
+import Cart from "./Components/Cart"
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             path="/item/:itemId"
             element={<ItemDetailContainer onAdd={onAdd} />}
           />
+          <Route exact path="/cart" element={<Cart />} />
           <Route exact path="*" element={<NotFound /> } />
         </Routes>
       </BrowserRouter>

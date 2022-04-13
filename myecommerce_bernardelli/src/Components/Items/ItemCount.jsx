@@ -8,8 +8,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import Typography from "@mui/material/Typography";
 
-export default function ItemCount({ stock, initial, onAdd }) {
-  
+export default function ItemCount({ stock, initial, onAdd, handleItemCount }) {
   const [count, setCount] = useState(initial);
   const [actualStock, setActualStock] = useState(stock);
 
@@ -65,9 +64,12 @@ export default function ItemCount({ stock, initial, onAdd }) {
           fullWidth={true}
           onClick={() => {
             setActualStock(actualStock - count);
-            count > 0
-              ? onAdd(count)
-              : alert("Por el momento no tenemos stock de este producto");
+            if (count > 0) {
+              onAdd(count);
+              handleItemCount(false);
+            } else {
+              alert("Por el momento no tenemos stock de este producto");
+            }
           }}
         >
           Agregar

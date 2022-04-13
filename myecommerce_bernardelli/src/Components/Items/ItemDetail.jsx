@@ -1,8 +1,16 @@
 import React from "react";
 import ItemCount from "./ItemCount";
 import ItemStyle from "./ItemDetail.module.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ItemDetail({ product, onAdd }) {
+  const [showItemCount, setShowItemCount] = useState(true);
+
+  function handleItemCount(flag) {
+    setShowItemCount(flag);
+  }
+
   return (
     <div>
       <div className={ItemStyle.productContainer}>
@@ -32,18 +40,11 @@ export default function ItemDetail({ product, onAdd }) {
                     currency: "ARS",
                   })}
                 </h1>
-                <button
-                  className={ItemStyle.productPurchase}
-                  onClick={() => {
-                    alert(
-                      "Felicitaciones por haber comprado " +
-                        product.title +
-                        ". Lo redirigiremos a su carrito para que pueda finalizar la compra."
-                    );
-                  }}
-                >
-                  Comprar ahora
-                </button>
+                {!showItemCount && (
+                  <div className={ItemStyle.productPurchase}>
+                    <Link to={"/cart"} className={ItemStyle.buttonPurchase}>Comprar ahora</Link>
+                  </div>
+                )}
               </div>
             </div>
             <div className={ItemStyle.productTextDescription}>
@@ -51,11 +52,14 @@ export default function ItemDetail({ product, onAdd }) {
               <p>{product.description}</p>
             </div>
             <div>
-              <ItemCount
-                stock={product.stock}
-                initial={product.initial}
-                onAdd={onAdd}
-              />
+              {showItemCount && (
+                <ItemCount
+                  stock={product.stock}
+                  initial={product.initial}
+                  onAdd={onAdd}
+                  handleItemCount={handleItemCount}
+                />
+              )}
             </div>
           </div>
         )}
