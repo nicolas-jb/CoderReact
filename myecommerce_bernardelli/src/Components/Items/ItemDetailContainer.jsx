@@ -3,9 +3,9 @@ import { getAProduct } from "../../utils/ApiResponse.js";
 import ItemDetail from "./ItemDetail.jsx";
 import { useParams } from "react-router-dom";
 
-export default function ItemDetailContainer({ onAdd }) {
-  const [product, setProduct] = useState({});
+export default function ItemDetailContainer() {
   const { itemId } = useParams();
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -18,7 +18,7 @@ export default function ItemDetailContainer({ onAdd }) {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "Space-around" }}>
-        <ItemDetail product={product} onAdd={onAdd} />
+        <ItemDetail product={product} />
       </div>
     </>
   );

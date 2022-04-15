@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import CartWidget from "../CartWidget";
 import logo from "../../logo.png";
@@ -6,9 +6,12 @@ import Categories from "../../utils/Categories.json";
 import { Link } from "react-router-dom";
 import style from "./NavBar.module.css";
 import Button from "@mui/material/Button";
+import { cartContext } from "../../Context/CartContext";
 
-export default function NavBar({ quantityProduct }) {
+export default function NavBar() {
   const categories = Categories.data;
+
+  let { getProductsQuantity } = useContext(cartContext);
 
   return (
     <>
@@ -34,10 +37,9 @@ export default function NavBar({ quantityProduct }) {
               );
             })}
           </Nav>
-          <CartWidget quantity={quantityProduct} />
+          <CartWidget quantity={getProductsQuantity()} />
         </Container>
       </Navbar>
-      ;
     </>
   );
 }

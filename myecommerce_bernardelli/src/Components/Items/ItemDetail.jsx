@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import ItemStyle from "./ItemDetail.module.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../Context/CartContext";
 
-export default function ItemDetail({ product, onAdd }) {
+export default function ItemDetail({ product }) {
   const [showItemCount, setShowItemCount] = useState(true);
+  const { addItem } = useContext(cartContext);
 
-  function handleItemCount(flag) {
-    setShowItemCount(flag);
+  function onAdd(quantity) {
+    setShowItemCount(false);
+    addItem(product, quantity);
   }
 
   return (
@@ -42,7 +44,9 @@ export default function ItemDetail({ product, onAdd }) {
                 </h1>
                 {!showItemCount && (
                   <div className={ItemStyle.productPurchase}>
-                    <Link to={"/cart"} className={ItemStyle.buttonPurchase}>Comprar ahora</Link>
+                    <Link to={"/cart"} className={ItemStyle.buttonPurchase}>
+                      Comprar ahora
+                    </Link>
                   </div>
                 )}
               </div>
@@ -57,7 +61,6 @@ export default function ItemDetail({ product, onAdd }) {
                   stock={product.stock}
                   initial={product.initial}
                   onAdd={onAdd}
-                  handleItemCount={handleItemCount}
                 />
               )}
             </div>
