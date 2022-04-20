@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import { getProducts } from "../../utils/ApiResponse.js";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader"
 
 export default function ItemListContainer({ greeting }) {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const {categoryId} = useParams()
 
   useEffect(() => {
+    setLoading(true)
     async function fetchData() {
       const response = await getProducts(categoryId);
       setProducts(response);
+      setLoading(false)
     }
     fetchData();
   }, [categoryId]);
@@ -22,7 +26,7 @@ export default function ItemListContainer({ greeting }) {
         {greeting}
       </h2>
       <div>
-        <ItemList products={products} />
+        {loading ? <Loader /> : <ItemList products={products} />}
       </div>
     </>
   );

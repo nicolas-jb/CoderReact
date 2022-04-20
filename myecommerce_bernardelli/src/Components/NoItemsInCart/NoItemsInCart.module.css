@@ -1,0 +1,25 @@
+.noItemContainer {
+  display: block;
+  margin: 1% auto auto 30%;
+ 
+}
+
+.noItemImage {
+  height: 300px;
+  width: auto;
+  padding: 10px
+  
+}
+
+.buttonHome {
+  background-color: #ffcc00;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  height: 48px;
+  width: 200px;
+  text-decoration: none;
+  color: black;
+  margin-left: 20%;
+  margin-top:2%
+}

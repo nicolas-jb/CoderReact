@@ -57,10 +57,16 @@ export default function CartContext({ children }) {
     return getCart().length === 0;
   }
 
+  function getTotalPrice() {
+    return cart
+      .map((product) => product.quantity * product.price)
+      .reduce((q1, q2) => q1 + q2, 0);
+  }
+
   return (
     <>
       <cartContext.Provider
-        value={{ addItem, getCart, getProductsQuantity, removeItem, clear }}
+        value={{ addItem, getCart, getProductsQuantity, removeItem, clear, getTotalPrice }}
       >
         {children}
       </cartContext.Provider>
