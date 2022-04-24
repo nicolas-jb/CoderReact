@@ -6,7 +6,7 @@ export default function ItemList({ products }) {
   return (
     <div style={{ display: "flex", justifyContent: "Space-around"}}>
       {products.map((product) => (
-        <Link  key={product.id} to={`/item/${product.id}`} style={{ textDecoration: "none" }}>
+        <Link  key={product.id} to={`/item/${product.id}`} style={{ textDecoration: "none", color: "black" }}>
           {" "}
           <Item product={product}/>
         </Link>

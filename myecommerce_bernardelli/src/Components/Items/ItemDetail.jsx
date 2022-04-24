@@ -45,7 +45,7 @@ export default function ItemDetail({ product }) {
                 {!showItemCount && (
                   <div className={ItemStyle.productPurchase}>
                     <Link to={"/cart"} className={ItemStyle.buttonPurchase}>
-                      Comprar ahora
+                       Ir al carrito
                     </Link>
                   </div>
                 )}

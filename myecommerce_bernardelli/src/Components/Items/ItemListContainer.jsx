@@ -22,7 +22,7 @@ export default function ItemListContainer({ greeting }) {
 
   return (
     <>
-      <h2 style={{ display: "flex", justifyContent: "Space-around" }}>
+      <h2 style={{ display: "flex", justifyContent: "Space-around", marginTop: "20px" }}>
         {greeting}
       </h2>
       <div>

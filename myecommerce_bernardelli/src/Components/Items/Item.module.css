@@ -1,0 +1,44 @@
+.products {
+  min-width: 16vw;
+  min-height: 100%;
+  padding: 10px;
+  margin-top: 10%;
+  position: relative;
+  transition: box-shadow .3s;
+
+}
+
+.products:hover {
+  box-shadow: 0 0 11px rgba(170, 159, 3, 0.2); 
+}
+
+.productImage {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.productDescription {
+  text-align: center;
+  display: block;
+  height: 200px;
+  position: relative;
+}
+
+
+.productDescription h3 {
+  padding: 5px;
+  font-size: 1.5em;
+}
+
+.productDescription h4 {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+}
+
+.productStock {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+}
