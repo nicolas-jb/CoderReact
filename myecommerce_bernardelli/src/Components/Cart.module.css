@@ -4,12 +4,15 @@
   margin-top: 2%;
 }
 
-
 .productContainer {
   width: 50%;
   margin-left: 10%;
 }
 
 .buttonClear {
-  height: 10%
+  height: 10%;
+}
+
+.buttonPurchase {
+  height: 10%;
 }
