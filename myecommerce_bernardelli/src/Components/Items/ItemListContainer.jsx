@@ -18,6 +18,10 @@ export default function ItemListContainer({ greeting }) {
       setLoading(false)
     }
     fetchData();
+    return () => {
+      setProducts(null)
+      setLoading(false)
+    }
   }, [categoryId]);
 
   return (

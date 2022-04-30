@@ -7,32 +7,25 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
 import NoItemsInCart from "./NoItemsInCart/NoItemsInCart";
 import CheckIcon from "@mui/icons-material/Check";
-import Backdrop from '@mui/material/Backdrop';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Form from "./Form"
+import Form from "./Form";
+import ModalComponent from "./ModalComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function CartWidget() {
   const { getCart, clear, getProductsQuantity, getTotalPrice } =
     useContext(cartContext);
+  const [showModal, setShowModal] = useState(false);
 
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const handleOpen = () => setShowRegisterModal(true);
-  const handleClose = () => setShowRegisterModal(false);
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #FFC008',
-    boxShadow: 24,
-    p: 4,
+  const handleModalView = (show) => {
+    setShowModal(show);
   };
-  
+
+  let navigate = useNavigate();
+
+  const handleFormClose = () => {
+    clear();
+    navigate("/");
+  };
 
   return (
     <>
@@ -66,27 +59,18 @@ export default function CartWidget() {
               variant="contained"
               color="warning"
               startIcon={<CheckIcon />}
-              onClick={handleOpen}
+              onClick={() => {
+                handleModalView(true);
+              }}
             >
               Comprar
             </Button>
-            <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={showRegisterModal}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={showRegisterModal}>
-          <Box sx={style}>
-            <Form />
-          </Box>
-        </Fade>
-      </Modal>
+            {showModal && (
+              <ModalComponent
+                content={<Form onClose={handleFormClose} />}
+                onChange={handleModalView}
+              />
+            )}
           </>
         )}
       </div>
