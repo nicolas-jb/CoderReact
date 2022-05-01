@@ -3,15 +3,27 @@ import ItemCount from "./ItemCount";
 import ItemStyle from "./ItemDetail.module.css";
 import { Link } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
+import ModalComponent from "../ModalComponent";
+import { checkStock } from "../../utils/ApiResponse.js";
 
 export default function ItemDetail({ product }) {
   const [showItemCount, setShowItemCount] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const { addItem } = useContext(cartContext);
 
-  function onAdd(quantity) {
-    setShowItemCount(false);
-    addItem(product, quantity);
+  async function onAdd(quantity) {
+    const actualStock = (await checkStock(product.id)) - quantity;
+    if (actualStock-quantity < 0) {
+      setShowModal(true);
+    } else {
+      setShowItemCount(false);
+      addItem(product, quantity);
+    }
   }
+
+  const handleModalView = (show) => {
+    setShowModal(show);
+  };
 
   return (
     <div>
@@ -45,7 +57,7 @@ export default function ItemDetail({ product }) {
                 {!showItemCount && (
                   <div className={ItemStyle.productPurchase}>
                     <Link to={"/cart"} className={ItemStyle.buttonPurchase}>
-                       Ir al carrito
+                      Ir al carrito
                     </Link>
                   </div>
                 )}
@@ -67,6 +79,14 @@ export default function ItemDetail({ product }) {
           </div>
         )}
       </div>
+      {showModal && (
+        <ModalComponent
+          content={
+            "Se produjo un error de stock. Lamentamos lo sucedido. Por favor, ingrese nuevamente al producto o si prefiere un representante se comunicará para explicar la situación"
+          }
+          onChange={handleModalView}
+        />
+      )}
     </div>
   );
 }

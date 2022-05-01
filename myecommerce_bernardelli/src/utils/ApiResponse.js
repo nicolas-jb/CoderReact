@@ -7,6 +7,9 @@ import {
   getFirestore,
   doc,
   getDoc,
+  addDoc,
+  serverTimestamp,
+  writeBatch,
 } from "firebase/firestore";
 
 export async function getProducts(categoryTitle) {
@@ -34,4 +37,46 @@ export async function getAProduct(id) {
     id: product.id,
     ...product.data(),
   }));
+}
+
+export async function saveOrder(order) {
+  order.date = serverTimestamp();
+  const db = getFirestore();
+  const batch = writeBatch(db);
+  const ordersCollectionRef = collection(db, "orders");
+  let orderId = null;
+  let flagError = false;
+
+  try {
+    await Promise.all(
+      await order.items.map(async (item) => {
+        const newStock = (await checkStock(item.id)) - item.quantity;
+        if (newStock < 0) {
+          flagError = true;
+          return Promise.reject("Error de stock");
+        }
+        const prodRef = doc(db, "productos", item.id);
+        batch.update(prodRef, { stock: newStock });
+        return Promise.resolve("OK");
+      })
+    );
+    if (!flagError) {
+      orderId = (await addDoc(ordersCollectionRef, {})).id;
+      const orderRef = doc(db, "orders", orderId);
+      batch.update(orderRef, { order });
+      await batch.commit();
+    }
+
+    return orderId;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+export async function checkStock(productId) {
+  const db = getFirestore();
+  const prodRef = doc(db, "productos", productId);
+  const stock = (await getDoc(prodRef)).data().stock;
+  return stock;
 }
